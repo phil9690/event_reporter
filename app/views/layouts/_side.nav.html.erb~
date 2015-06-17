@@ -1,7 +1,0 @@
-<% if @employee %>
-	<ul>
-		<li><%= link_to "Statistics", employee_path(@employee) %></li>
-		<li><%= link_to "Events", employee_events_path(@employee) %></li>
-		<li><%= link_to "Log an Event", new_employee_event_path(@employee) %></li>
-	</ul>
-<% end %>
