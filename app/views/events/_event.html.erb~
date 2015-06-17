@@ -1,5 +1,0 @@
-<div class="panel radius event">
-	<p><strong><%= event.incident_type %></strong></p>
-	<p>Logged on: <%= event.created_at.strftime("%d/%m/%Y") %> at <%= event.created_at.strftime("%H:%M:%S") %></p>
-	<%= link_to 'view', employee_event_path(event.employee, event) %>
-</div>
