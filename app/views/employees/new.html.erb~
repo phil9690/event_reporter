@@ -1,3 +1,0 @@
-<h2>Create New Employee</h2>
-
-<%= render 'employees/form' %>
