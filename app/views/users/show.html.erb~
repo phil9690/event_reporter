@@ -1,8 +1,0 @@
-<h4><%= @user.first_name.humanize %> <%= @user.last_name.humanize %></h4>
-<p><strong>Authority:</strong> <%= @user.authority.humanize %></p>
-<p><strong>Events logged:</strong> <%= @user.events.all.count %></p>
-<p><strong>ID:</strong> <%= @user.id %></p>
-<%= link_to 'Edit user details', edit_user_path(@user) %>
-<%= link_to 'Delete this user', user_path(@user),
-						method: :delete,
-						data: { confirm: 'Sure?'} %>
