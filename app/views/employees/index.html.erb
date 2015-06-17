@@ -1,0 +1,9 @@
+<% if is_admin? %>
+  <%= link_to "Add Employee", new_employee_path, class: "button btn-green" %>
+<% end %>
+<h3>Employee list</h3>
+<ul>
+	<% @employees.each do |employee| %>
+		<li><%= link_to "#{employee.first_name} #{employee.last_name}", employee_path(employee) %></li>
+	<% end %>
+</ul>

@@ -1,0 +1,33 @@
+<% if is_admin? %>
+  <%= link_to "Export Data", events_export_path(format: "csv"), class: "button radius btn-green" %>
+<% end %>
+
+<div class="row">
+  <div class="small-12 columns">
+    <%= form_tag("/all-events", method: "get", id: "search-form") do %>
+      <%= check_box_tag(:phone, "Phone") %>
+      <%= label_tag(:phone, "Phone") %>
+      <%= check_box_tag(:late, "Late") %>
+      <%= label_tag(:late, "Late") %>
+      <%= check_box_tag(:attendance, "Attendance") %>
+      <%= label_tag(:attendance, "Attendance") %>
+      <%= check_box_tag(:behaviour, "Behaviour") %>
+      <%= label_tag(:behaviour, "Behaviour") %>
+      <%= label_tag(:event_date, "Date") %>
+      <%= date_field(:event_date, "Date", id: "event-date-select") %>
+      <%= submit_tag "Search", class: "button small radius" %>
+      <%= link_to "Clear", all_events_path, class: "button small radius" %>
+    <% end %>
+  </div>
+</div>
+
+<%= will_paginate @events %>
+<% @events.each do |event| %>
+  <div class="panel radius event unread">
+    <p><strong><%= "#{event.employee.first_name} #{event.employee.last_name}" %></strong></p>
+    <p><%= event.incident_type %></p>
+    <p>Logged on: <%= event.created_at.strftime("%d/%m/%Y") %> at <%= event.created_at.strftime("%H:%M:%S") %> by <%= logged_by(event.user) %> </p>
+    <%= link_to 'view', employee_event_path(event.employee, event), class: is_unread(@unreads, event) %>
+  </div>
+<% end %>
+<%= will_paginate @events %>

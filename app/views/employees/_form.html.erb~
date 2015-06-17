@@ -1,0 +1,21 @@
+<%= form_for @employee do |f| %>
+
+	<% if @employee.errors.any? %>
+		<p>The form contains <%= pluralize(@employee.errors.count, "error") %>.</p>
+		<ul>
+			<% @employee.errors.full_messages.each do |msg| %>
+				<div class="errors">
+					<li><%= msg %></li>
+				</div>
+		  <% end %>
+		</ul>
+	<% end %>
+	<%= f.label :first_name %>
+	<%= f.text_field :first_name %>
+	
+	<%= f.label :last_name %>
+	<%= f.text_field :last_name %>
+	
+	<%= f.submit "Submit", data: { disable_with: "Saving..." }, class: "button" %>
+	
+<% end %>

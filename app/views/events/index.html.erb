@@ -1,0 +1,9 @@
+<h3>Total Events: <%= @events.count %></h3>
+<ul id="event-stats">
+  <li><strong>Attendance:</strong> <%= @events.where("incident_type = 'Attendance'").count %></li>
+  <li><strong>Behaviour:</strong> <%= @events.where("incident_type = 'Behaviour'").count %></li>
+  <li><strong>Late:</strong> <%= @events.where("incident_type = 'Late'").count %></li>
+  <li><strong>Phone:</strong> <%= @events.where("incident_type = 'Phone'").count %></li>	
+</ul>
+
+<%= render @employee.events %>

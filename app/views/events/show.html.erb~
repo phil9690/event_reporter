@@ -1,0 +1,8 @@
+<div class="panel radius">
+	<h4><%= @event.incident_type %></h4>
+	<p><%= @event.description %></p>
+	<p>Logged on: <%= @event.created_at.strftime("%d/%m/%Y") %> at <%= @event.created_at.strftime("%H:%M:%S") %> by <%= logged_by(@event.user) %></p>
+	<%= link_to 'Delete', employee_event_path(@event.employee, @event),
+							method: :delete,
+							data: { confirm: 'Sure?'} %>
+</div>

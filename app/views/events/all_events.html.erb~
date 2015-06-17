@@ -1,0 +1,15 @@
+<%= link_to "Export Data", events_export_path(format: "csv"), class: "button export" %>
+
+<% @events.each do |event| %>
+	<div class="panel radius event unread">
+		<p><strong><%= event.incident_type %></strong></p>
+		<p><%= "#{event.employee.first_name} #{event.employee.last_name}" %></p>
+		<p>Logged on: <%= event.created_at.strftime("%d/%m/%Y") %> at <%= event.created_at.strftime("%H:%M:%S") %></p>
+		<%= link_to 'view', employee_event_path(event.employee, event), class: is_unread(@unreads, event) %>
+		<!-- <%# @unreads.each do |unread| %>
+			<%# if event.id == unread.event_id %>
+				<p>Unread</p>
+			<%# end %>
+		<%# end %> -->
+	</div>
+<% end %>

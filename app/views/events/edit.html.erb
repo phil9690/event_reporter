@@ -1,0 +1,26 @@
+<h3>Edit event</h3>
+
+<%= @employee.first_name %>
+
+
+<%= form_for [@event.employee, @event] do |f| %>
+
+
+	<% if @event.errors.any? %>
+		<p>The form contains <%= pluralize(@event.errors.count, "error") %>.</p>
+		<ul>
+			<% @event.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+		  <% end %>
+		</ul>
+	<% end %>
+
+	<%= f.label :incident_type %>
+	<%= f.select :incident_type, options_for_select(Event::EVENT_TYPES) %>
+	
+	<%= f.label :description %>
+	<%= f.text_area :description %>
+	
+	<%= f.submit "Submit", data: { disable_with: "Saving..." }, class: "button" %>
+
+<% end %>

@@ -1,0 +1,13 @@
+<% if @employee %>
+	<% unless is_active('employees', 'new') or is_active('employees', 'create') %>
+		<div id="side-nav">
+			<ul>
+				<li class=<%= is_active('employees', 'show') %>><%= link_to "#{@employee.first_name} #{@employee.last_name}", employee_path(@employee) %></li>
+				<li class=<%= is_active('events', 'index') %>><%= link_to "Events", employee_events_path(@employee) %></li>
+				<% unless is_qa? %>
+					<li class=<%= is_active('events', 'new') %>><%= link_to "Log an Event", new_employee_event_path(@employee) %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+<% end %>
