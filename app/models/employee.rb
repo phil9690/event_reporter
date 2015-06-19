@@ -7,8 +7,8 @@ class Employee < ActiveRecord::Base
 
   def self.search(search)
     scope = all
-    scope = scope.where(first_name: search) unless search[0].empty?
-    scope = scope.where(last_name: search) unless search[1].empty?
+    scope = scope.where("first_name like ?", "%#{search[0]}%") unless search[0].empty?
+    scope = scope.where("last_name like ?", "%#{search[1]}%") unless search[1].empty?
     scope
   end
 
