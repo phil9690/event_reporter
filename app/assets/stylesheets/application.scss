@@ -22,6 +22,13 @@ $light-blue: #0099FF;
 $populus-green: #8DC63F;
 $populus-green-dark: #77A832;
 $alert-red: #f04124;
+$snow: #F9F9F9;
+
+.debugger {
+  background: $populus-green;
+  color: $snow;
+  padding: 1em;
+}
 
 body {
 	margin: 0;
