@@ -4,6 +4,7 @@ gem 'bcrypt'
 gem'mysql2'
 gem 'foundation-rails'
 gem 'will_paginate'
+gem 'will_paginate-foundation'
 gem 'pry'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
