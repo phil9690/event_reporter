@@ -6,4 +6,12 @@
   <li><strong>Phone:</strong> <%= @events.where("incident_type = 'Phone'").count %></li>	
 </ul>
 
-<%= render @employee.events %>
+<%= will_paginate @events %>
+<% @events.each do |event| %>
+  <div class="panel radius event unread">
+  <p><strong><%= event.incident_type %></strong></p>
+  <p>Logged on: <%= event.created_at.strftime("%d/%m/%Y") %> at <%= event.created_at.strftime("%H:%M:%S") %> by <%= logged_by(event.user) %> </p>
+  <%= link_to 'view', employee_event_path(event.employee, event), class: is_unread(@unreads, event) %>
+</div>
+<% end %>
+<%= will_paginate @events %>

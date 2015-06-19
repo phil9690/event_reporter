@@ -17,7 +17,7 @@ class EventsController < ApplicationController
 
   def index
     @employee = Employee.find(params[:employee_id])
-    @events = @employee.events.all
+    @events = @employee.events.all.paginate(:page => params[:page], :per_page => 5)
     @unreads = current_user.unreads
   end
 
