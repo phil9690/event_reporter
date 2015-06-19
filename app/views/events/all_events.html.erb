@@ -23,7 +23,7 @@
   </div>
 </div>
 
-<%= will_paginate @events %>
+<%= will_paginate @events, renderer: FoundationPagination::Rails %>
 <% @events.each do |event| %>
   <div class="panel radius event unread">
     <p><strong><%= "#{event.employee.first_name} #{event.employee.last_name}" %></strong></p>
@@ -32,4 +32,4 @@
     <%= link_to 'view', employee_event_path(event.employee, event), class: is_unread(@unreads, event) %>
   </div>
 <% end %>
-<%= will_paginate @events %>
+<%= will_paginate @events, renderer: FoundationPagination::Rails%>
