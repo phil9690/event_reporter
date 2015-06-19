@@ -22,7 +22,7 @@ class Event < ActiveRecord::Base
 
   def self.search(search)
     scope = all
-    scope = scope.where(incident_type: search) if !(search[0].nil? && search[1].nil? && search[2].nil? && search[3].nil?)
+    scope = scope.where(incident_type: search) if !(search[0].nil? && search[1].nil? && search[2].nil? && search[3].nil? && search[4].nil?)
     scope = scope.where("DATE(created_at) = ?", search[-1]["Date"]) unless search[-1]["Date"].empty?
     scope
   end
