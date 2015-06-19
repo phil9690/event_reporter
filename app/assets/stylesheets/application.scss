@@ -156,6 +156,28 @@ input, label {
 	color: $alert-red !important;
 }
 
+.pagination {
+  margin-bottom: 1em;
+}
+
+.employee-search {
+  .columns {
+    padding-left: 0;
+  }
+}
+
+.employee-list {
+  .columns {
+    padding-left: 0;
+  }
+}
+
+.employee-index-header {
+  .columns {
+    padding-left: 0;
+  }
+}
+
 #search-form {
   input {
     display: inline-block;
