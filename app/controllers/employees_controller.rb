@@ -5,54 +5,58 @@ class EmployeesController < ApplicationController
 
 
   rescue_from ActiveRecord::RecordNotFound do
-		flash[:notice] = 'The employee you tried to access does not exist'
-		redirect_to employees_path
-	end
+    flash[:notice] = 'The employee you tried to access does not exist'
+    redirect_to employees_path
+  end
 
   def index
-  	@employees = Employee.all
+    if params[:first_name] || params[:last_name]
+      @employees = Employee.search([params[:first_name], params[:last_name]]).order("created_at DESC")
+    else
+      @employees = Employee.all
+    end
   end
 
   def new
-		@employee = Employee.new
+    @employee = Employee.new
   end
 
   def create
-  	@employee = Employee.new(employee_params)
-  	if @employee.save
-  		redirect_to root_path
-  	else
-  		render 'new'
-  	end
+    @employee = Employee.new(employee_params)
+    if @employee.save
+      redirect_to root_path
+    else
+      render 'new'
+    end
   end
 
   def edit
-  	@employee = Employee.find(params[:id])
+    @employee = Employee.find(params[:id])
   end
 
   def update
-  	@employee = Employee.find(params[:id])
-  	if @employee.update_attributes(employee_params)
-  		redirect_to employee_path(@employee)
-  	else
-  		render 'edit'
-  	end
+    @employee = Employee.find(params[:id])
+    if @employee.update_attributes(employee_params)
+      redirect_to employee_path(@employee)
+    else
+      render 'edit'
+    end
   end
-  
+
   def show
-  	@employee = Employee.find(params[:id])
-  	#@event = Event.new
+    @employee = Employee.find(params[:id])
+    #@event = Event.new
   end
 
   def destroy
-  	@employee = Employee.find(params[:id])
-  	@employee.destroy
-  	
-  	redirect_to root_path
+    @employee = Employee.find(params[:id])
+    @employee.destroy
+
+    redirect_to root_path
   end
-  
+
   private
-  	def employee_params
-  		params.require(:employee).permit(:first_name, :last_name)
-  	end
+  def employee_params
+    params.require(:employee).permit(:first_name, :last_name)
+  end
 end
