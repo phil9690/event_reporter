@@ -4,6 +4,7 @@
   <li><strong>Behaviour:</strong> <%= @events.where("incident_type = 'Behaviour'").count %></li>
   <li><strong>Late:</strong> <%= @events.where("incident_type = 'Late'").count %></li>
   <li><strong>Phone:</strong> <%= @events.where("incident_type = 'Phone'").count %></li>	
+  <li><strong>Suspension:</strong> <%= @events.where("incident_type = 'Suspension'").count %></li>	
 </ul>
 
 <%= will_paginate @events, renderer: FoundationPagination::Rails %>
