@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150423104937) do
+ActiveRecord::Schema.define(version: 20150619161358) do
 
   create_table "employees", force: :cascade do |t|
     t.string   "first_name", limit: 255
@@ -39,6 +39,12 @@ ActiveRecord::Schema.define(version: 20150423104937) do
   end
 
   add_index "read_marks", ["user_id", "readable_type", "readable_id"], name: "index_read_marks_on_user_id_and_readable_type_and_readable_id", using: :btree
+
+  create_table "suspensions", force: :cascade do |t|
+    t.integer  "employee_id", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
 
   create_table "unreads", force: :cascade do |t|
     t.integer  "user_id",    limit: 4

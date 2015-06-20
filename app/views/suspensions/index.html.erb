@@ -1,0 +1,7 @@
+<h3>Suspensions</h3>
+
+<ul>
+  <% @suspensions.each do |suspension| %>
+    <li><%= link_to "#{suspension.employee.first_name} #{suspension.employee.last_name}", employee_path(suspension.employee) %></li>
+<% end %>
+</ul>
