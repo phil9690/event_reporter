@@ -16,7 +16,7 @@
       <%= check_box_tag(:suspension, "Suspension") %>
       <%= label_tag(:suspension, "Suspension") %>
       <%= label_tag(:event_date, "Date") %>
-      <%= date_field(:event_date, "Date", id: "event-date-select") %>
+      <%= date_field(:event_date, nil, id: "event-date-select") %>
       <%= submit_tag "Search", class: "button small radius" %>
       <%= link_to "Clear", all_events_path, class: "button small radius" %>
     <% end %>
