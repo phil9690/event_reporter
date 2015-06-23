@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :users
 
   get 'all-events' => 'events#all_events'
+  get 'overview' => 'events#overview'
 
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
