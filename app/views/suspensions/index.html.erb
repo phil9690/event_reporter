@@ -2,6 +2,6 @@
 
 <ul>
   <% @suspensions.each do |suspension| %>
-    <li><%= link_to "#{suspension.employee.first_name} #{suspension.employee.last_name}", employee_path(suspension.employee) %></li>
+    <li><%= link_to "#{suspension.employee.first_name} #{suspension.employee.last_name}", employee_event_path(suspension.employee, suspension.event) %></li>
 <% end %>
 </ul>
