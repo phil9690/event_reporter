@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="small-12 columns events-overview">
+    <h3>Events Overview</h3>
+    <ul class="accordion" data-accordion>
+      <li class="accordion-navigation">
+      <a href="#panel1a">Overall</a>
+      <div id="panel1a" class="content">
+        <div id="total-stats" class="panel radius">
+          <p><span>All:</span> <%= @events.count %></p>
+          <p><span>Attendance:</span> <%= @events.where(incident_type: "Attendance").count %></p>
+          <p><span>Behaviour:</span> <%= @events.where(incident_type: "Behaviour").count %></p>
+          <p><span>Late:</span> <%= @events.where(incident_type: "Late").count %></p>
+          <p><span>Phone:</span> <%= @events.where(incident_type: "Phone").count %></p>
+          <p><span>Suspension:</span> <%= @events.where(incident_type: "Suspension").count %></p>
+        </div>
+      </div>
+      </li>
+      <li class="accordion-navigation">
+      <a href="#panel2a">Today</a>
+      <div id="panel2a" class="content">
+        <div id="daily-stats" class="panel radius">
+          <p><span>All:</span> <%= @events_today.count %></p>
+          <p><span>Attendance:</span> <%= @events_today.where(incident_type: "Attendance").count %></p>
+          <p><span>Behaviour:</span> <%= @events_today.where(incident_type: "Behaviour").count %></p>
+          <p><span>Late:</span> <%= @events_today.where(incident_type: "Late").count %></p>
+          <p><span>Phone:</span> <%= @events_today.where(incident_type: "Phone").count %></p>
+          <p><span>Suspension:</span> <%= @events_today.where(incident_type: "Suspension").count %></p>
+        </div>
+      </div>
+      </li>
+      <li class="accordion-navigation">
+      <a href="#panel3a">Past 7 days</a>
+      <div id="panel3a" class="content">
+        <div id="7-day-stats" class="panel radius">
+          <p><span>All:</span> <%= @events_7_days.count %></p>
+          <p><span>Attendance:</span> <%= @events_7_days.where(incident_type: "Attendance").count %></p>
+          <p><span>Behaviour:</span> <%= @events_7_days.where(incident_type: "Behaviour").count %></p>
+          <p><span>Late:</span> <%= @events_7_days.where(incident_type: "Late").count %></p>
+          <p><span>Phone:</span> <%= @events_7_days.where(incident_type: "Phone").count %></p>
+          <p><span>Suspension:</span> <%= @events_7_days.where(incident_type: "Suspension").count %></p>
+        </div>
+      </div> 
+    </div>
+    </li>
+  </ul>
+</div>
+</div>
