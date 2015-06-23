@@ -15,6 +15,12 @@ class EventsController < ApplicationController
     @unreads = current_user.unreads
   end
 
+  def overview
+    @events = Event.all 
+    @events_today = @events.where("created_at >= ?", Time.zone.now.beginning_of_day)
+    @events_7_days = @events.where("created_at >= ?", Date.today - 1.week)
+  end
+
   def index
     @employee = Employee.find(params[:employee_id])
     @events = @employee.events.all.paginate(:page => params[:page], :per_page => 5)
@@ -33,6 +39,9 @@ class EventsController < ApplicationController
       users = User.all.ids
       users.each do |user|
         Unread.create(user_id: user, event_id: @event.id)
+      end
+      if @event.incident_type == "Suspension"
+        Suspension.create(employee_id: @event.employee_id, event_id: @event.id)
       end
       redirect_to employee_events_path(@employee)
     else
