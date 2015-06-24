@@ -12,17 +12,13 @@ module EventsHelper
     end
   end
 
-  def check_for_suspension(event, employee)
+  def check_if_suspended(event, employee)
     if event.incident_type == "Suspension"
       if Suspension.active.find_by(employee_id: event.employee_id).present?
-        flash.now[:danger] = "This employee is currently suspended"
-        render 'new'
-      else
-        Suspension.create(employee_id: event.employee_id, event_id: event.id)
-        redirect_to employee_event_path(employee, event)
+        true
       end
     else
-      redirect_to employee_event_path(employee, event)
+      false
     end
   end
 
