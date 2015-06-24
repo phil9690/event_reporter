@@ -1,6 +1,6 @@
 <div class="row employee-index-header">
   <div class="small-12 columns">
-    <% if is_admin? %>
+    <% unless is_qa? %>
       <%= link_to "Add Employee", new_employee_path, class: "button radius btn-green" %>
   <% end %>
     <h3>Employees</h3>

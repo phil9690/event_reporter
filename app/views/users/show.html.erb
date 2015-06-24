@@ -4,8 +4,10 @@
 <p><strong>Unread events:</strong> <%= @unreads.count %></p>
 <p><strong>ID:</strong> <%= @user.id %></p>
 
-<% if is_admin? %>
+<% unless is_qa? %>
   <%= link_to 'Edit user details', edit_user_path(@user), class: "button radius btn-green" %>
+<% end %>
+<% if is_admin? %>  
   <%= link_to 'Delete this user', user_path(@user),
     method: :delete,
     data: { confirm: 'Sure?'}, class: "button radius btn-green"  %>

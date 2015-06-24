@@ -40,19 +40,10 @@ class EventsController < ApplicationController
       users.each do |user|
         Unread.create(user_id: user, event_id: @event.id)
       end
-      if @event.incident_type == "Suspension"
-        Suspension.create(employee_id: @event.employee_id, event_id: @event.id)
-      end
-      redirect_to employee_events_path(@employee)
+      check_for_suspension(@event, @employee)
     else
       render 'new'
     end
-    #  	@event = Event.new(event_params)
-    #		if @event.save
-    #  		redirect_to root_path
-    #  	else
-    #  		render 'new'
-    #  	end
   end
 
   def show

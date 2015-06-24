@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
 	before_action :logged_in_user
 	before_action :correct_user, only: [:show]
-	before_action :is_admin, only: [:index, :create, :edit, :update, :destroy, :new]
+	before_action :is_admin, only: [:index, :create, :destroy, :new]
+        before_action :is_admin_or_sup, only: [:edit, :update]
 
 	def index
 		@users = User.all

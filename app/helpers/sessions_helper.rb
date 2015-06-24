@@ -24,6 +24,10 @@ module SessionsHelper
   def is_admin?
     current_user.authority == "admin"
   end
+
+  def is_sup?
+    current_user.authority == "supervisor"
+  end
   
   
   def is_admin
@@ -36,6 +40,18 @@ module SessionsHelper
       end
     end
   end
+
+  def is_admin_or_sup
+    unless is_admin? || is_sup?
+      flash[:danger] = "You do not have the authority to access this."
+      if logged_in?
+        redirect_to user_path(current_user)
+      else
+        redirect_to login_path
+      end
+    end
+  end
+
   
   def is_qa?
     current_user.authority == "qa"
