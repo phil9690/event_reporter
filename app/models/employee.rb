@@ -5,8 +5,12 @@ class Employee < ActiveRecord::Base
 	
   validates :first_name, :last_name, presence: true
 
+  scope :active, -> { where(active: true) }
+  scope :inactive, -> { where(active: false) }
+
   def self.search(search)
-    scope = all
+    scope = all.active if search[2].nil?
+    scope = all.inactive unless search[2].nil?
     scope = scope.where("first_name like ?", "%#{search[0]}%") unless search[0].empty?
     scope = scope.where("last_name like ?", "%#{search[1]}%") unless search[1].empty?
     scope

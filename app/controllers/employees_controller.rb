@@ -10,10 +10,10 @@ class EmployeesController < ApplicationController
   end
 
   def index
-    if params[:first_name] || params[:last_name]
-      @employees = Employee.search([params[:first_name], params[:last_name]]).order("created_at DESC")
+    if params[:first_name] || params[:last_name] || params[:inactive]
+      @employees = Employee.search([params[:first_name], params[:last_name], params[:inactive]]).order("created_at DESC")
     else
-      @employees = Employee.all
+      @employees = Employee.active
     end
   end
 
@@ -57,6 +57,6 @@ class EmployeesController < ApplicationController
 
   private
   def employee_params
-    params.require(:employee).permit(:first_name, :last_name)
+    params.require(:employee).permit(:first_name, :last_name, :active)
   end
 end
