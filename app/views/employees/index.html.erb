@@ -9,16 +9,22 @@
 <div class="row employee-search">
   <div class="small-12 columns">
     <%= form_tag("/employees", method: "get", id: "search-form") do %>
-      <div class="small-6 columns">
+      <div class="small-5 columns">
       <%= label_tag(:first_name, "First Name") %>
       <%= text_field_tag(:first_name) %>
     </div>
-    <div class="small-6 columns">
+    <div class="small-5 columns">
       <%= label_tag(:last_name, "Surname") %>
       <%= text_field_tag(:last_name) %>
     </div>
-    <%= submit_tag "Search", class: "button small radius" %>
-    <%= link_to "Clear", employees_path, class: "button small radius" %>
+    <div class="small-2 columns">
+      <%= label_tag(:inactive, "Inactive") %>
+      <%= check_box_tag(:inactive) %>
+    </div>
+    <div class="small-12 columns">
+      <%= submit_tag "Search", class: "button small radius" %>
+      <%= link_to "Clear", employees_path, class: "button small radius" %>
+    </div>
   <% end %>
   </div>
 </div>
