@@ -34,15 +34,20 @@ class EventsController < ApplicationController
 
   def create
     @employee = Employee.find(params[:employee_id])
-    @event = @employee.events.create(event_params)
-    if @event.save
-      users = User.all.ids
-      users.each do |user|
-        Unread.create(user_id: user, event_id: @event.id)
-      end
-      check_for_suspension(@event, @employee)
-    else
+    @event = @employee.events.new(event_params)
+    if check_if_suspended(@event, @employee)
+      flash.now[:danger] = "This employee is currently suspended"
       render 'new'
+    else
+      if @event.save
+        users = User.all.ids
+        users.each do |user|
+          Unread.create(user_id: user, event_id: @event.id)
+        end
+        redirect_to employee_event_path(@event.employee, @event)
+      else
+        render 'new'
+      end 
     end
   end
 
