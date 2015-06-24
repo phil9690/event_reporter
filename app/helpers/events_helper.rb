@@ -15,11 +15,10 @@ module EventsHelper
   def check_if_suspended(event, employee)
     if event.incident_type == "Suspension"
       if Suspension.active.find_by(employee_id: event.employee_id).present?
-        return true
-      else
-        Suspension.create(employee_id: event.employee_id, event_id: @event.id)
-        return false
+        true
       end
+    else
+      false
     end
   end
 
