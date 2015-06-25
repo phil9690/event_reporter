@@ -26,7 +26,7 @@
 <%= will_paginate @events, renderer: FoundationPagination::Rails %>
 <% @events.each do |event| %>
   <div class="panel radius event unread">
-    <p><strong><%= "#{event.employee.first_name} #{event.employee.last_name}" %></strong></p>
+    <p><strong><%= "#{event.employee.pid} - #{event.employee.first_name} #{event.employee.last_name}" %></strong></p>
     <p><%= event.incident_type %></p>
     <p>Logged on: <%= event.created_at.strftime("%d/%m/%Y") %> at <%= event.created_at.strftime("%H:%M:%S") %> by <%= logged_by(event.user) %> </p>
     <%= link_to 'view', employee_event_path(event.employee, event), class: is_unread(@unreads, event) %>

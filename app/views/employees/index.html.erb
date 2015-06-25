@@ -30,10 +30,12 @@
 </div>
 <div class="row employee-list">
   <div class="small-12 columns">
+    <%= will_paginate @employees, renderer: FoundationPagination::Rails %>
     <ul>
       <% @employees.each do |employee| %>
-        <li><%= link_to "#{employee.first_name} #{employee.last_name}", employee_path(employee) %></li>
+        <li><%= link_to "#{employee.pid} - #{employee.first_name} #{employee.last_name}", employee_path(employee) %></li>
     <% end %>
-    </ul>
+  </ul>
+  <%= will_paginate @employees, renderer: FoundationPagination::Rails %>
   </div>
 </div>
