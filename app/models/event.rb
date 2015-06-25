@@ -21,10 +21,12 @@ class Event < ActiveRecord::Base
     end
   end
 
-  def self.search(search)
+  def self.search(search_params)
+    type_search = search_params.except(:event_date)
+    event_date = search_params[:event_date][0]
     scope = all
-    scope = scope.where(incident_type: search) if !(search[0].nil? && search[1].nil? && search[2].nil? && search[3].nil? && search[4].nil?)
-    scope = scope.where("DATE(created_at) = ?", search[-1]["Date"]) unless search[-1]["Date"].empty?
+    scope = scope.where(incident_type: type_search.values) unless type_search.empty?
+    scope = scope.where("DATE(created_at) = ?", event_date) unless event_date.empty?
     scope
   end
 

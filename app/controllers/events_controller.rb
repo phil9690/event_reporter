@@ -6,8 +6,9 @@ class EventsController < ApplicationController
 
 
   def all_events
-    if params[:phone] || params[:late] || params[:attendance] || params[:behaviour] || params[:event_date] || params[:suspension]
-      @events = Event.search([params[:phone], params[:late], params[:attendance], params[:behaviour], params[:suspension], params[:event_date]]).order("created_at DESC")
+    search_params = params.except(:utf8, :commit, :controller, :action)
+    if search_params.present?
+      @events = Event.search(search_params).order("created_at DESC")
       @events = @events.paginate(:page => params[:page], :per_page => 5)
     else
       @events = Event.all.paginate(:page => params[:page], :per_page => 5)
