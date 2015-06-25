@@ -12,8 +12,10 @@ class EmployeesController < ApplicationController
   def index
     if params[:first_name] || params[:last_name] || params[:inactive]
       @employees = Employee.search([params[:first_name], params[:last_name], params[:inactive]]).order("created_at DESC")
+      @employees = @employees.paginate(:page => params[:page], :per_page => 15)
     else
       @employees = Employee.active
+      @employees = @employees.paginate(:page => params[:page], :per_page => 15)
     end
   end
 
@@ -57,6 +59,6 @@ class EmployeesController < ApplicationController
 
   private
   def employee_params
-    params.require(:employee).permit(:first_name, :last_name, :active)
+    params.require(:employee).permit(:first_name, :last_name, :active, :pid)
   end
 end

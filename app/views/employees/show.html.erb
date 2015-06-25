@@ -1,15 +1,19 @@
-<h3><%= @employee.first_name.humanize %> <%= @employee.last_name.humanize %></h3>
+<div class="row">
+  <div class="small-12 columns employee-show">
+    <h3><%= @employee.pid %> - <%= @employee.first_name.humanize %> <%= @employee.last_name.humanize %></h3>
 
-<h4><strong>Total Events: </strong><%= @employee.events.count %></h4>
-<p><strong>Attendance: </strong><%= @employee.events.where("incident_type = 'Attendance'").count %></p>
-<p><strong>Behaviour: </strong><%= @employee.events.where("incident_type = 'Behaviour'").count %></p>
-<p><strong>Phone: </strong><%= @employee.events.where("incident_type = 'Phone'").count %></p>
-<p><strong>Late: </strong><%= @employee.events.where("incident_type = 'Late'").count %></p>
-<p><strong>Suspension: </strong><%= @employee.events.where("incident_type = 'Suspension'").count %></p>
+    <h4><strong>Total Events: </strong><%= @employee.events.count %></h4>
+    <p><strong>Attendance: </strong><%= @employee.events.where("incident_type = 'Attendance'").count %></p>
+    <p><strong>Behaviour: </strong><%= @employee.events.where("incident_type = 'Behaviour'").count %></p>
+    <p><strong>Phone: </strong><%= @employee.events.where("incident_type = 'Phone'").count %></p>
+    <p><strong>Late: </strong><%= @employee.events.where("incident_type = 'Late'").count %></p>
+    <p><strong>Suspension: </strong><%= @employee.events.where("incident_type = 'Suspension'").count %></p>
 
-<% if is_admin? %>
-  <%= link_to 'Edit Details', edit_employee_path(@employee), class: "button radius btn-green" %>
-  <%= link_to 'Delete Employee', employee_path(@employee),
-    method: :delete,
-    data: { confirm: 'Sure?'}, class: "button radius btn-green" %>
-<% end %>
+    <% if is_admin? %>
+      <%= link_to 'Edit Details', edit_employee_path(@employee), class: "button radius btn-green" %>
+    <%= link_to 'Delete Employee', employee_path(@employee),
+      method: :delete,
+      data: { confirm: 'Sure?'}, class: "button radius btn-green" %>
+  <% end %>
+  </div>
+</div>

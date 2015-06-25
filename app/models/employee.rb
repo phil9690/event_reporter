@@ -3,7 +3,8 @@ class Employee < ActiveRecord::Base
   has_many :events, dependent: :destroy
   accepts_nested_attributes_for :events
 	
-  validates :first_name, :last_name, presence: true
+  validates :first_name, :last_name, :pid, presence: true
+  validates :pid, length: { is: 5 }, uniqueness: true
 
   scope :active, -> { where(active: true) }
   scope :inactive, -> { where(active: false) }
