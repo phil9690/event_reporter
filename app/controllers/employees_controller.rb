@@ -47,14 +47,13 @@ class EmployeesController < ApplicationController
 
   def show
     @employee = Employee.find(params[:id])
-    #@event = Event.new
   end
 
   def destroy
     @employee = Employee.find(params[:id])
     @employee.destroy
 
-    redirect_to root_path
+    redirect_to employee_path
   end
 
   private
