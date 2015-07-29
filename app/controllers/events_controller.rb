@@ -98,12 +98,4 @@ class EventsController < ApplicationController
     params.require(:event).permit(:incident_type, :description, :employee_id, :user_id)
   end
 
-  #  def logged_by_user(event)
-  #		loggedby = event.logged_by
-  #		loggedby= User.find(loggedby)
-  #		"#{loggedby.first_name} #{loggedby.last_name} "
-  #		#event.logged_by
-  #		
-  #	end
-
 end
