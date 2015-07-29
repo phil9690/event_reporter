@@ -1,15 +1,15 @@
 <%= form_for @user do |f| %>
 
   <% if @user.errors.any? %>
-  <p>The form contains <%= pluralize(@user.errors.count, "error") %>.</p>
-<ul>
-  <% @user.errors.full_messages.each do |msg| %>
-    <div class="errors">
-    <li><%= msg %></li>
-  </div>
+    <p>The form contains <%= pluralize(@user.errors.count, "error") %>.</p>
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <div class="errors">
+        <li><%= msg %></li>
+      </div>
+    <% end %>
+  </ul>
 <% end %>
-</ul>
-        <% end %>
 
 <%= f.label :first_name %>
 <%= f.text_field :first_name %>
@@ -19,11 +19,11 @@
 
 <% if is_admin? %>
   <%= f.label :username %>
-<%= f.text_field :username %>
+  <%= f.text_field :username %>
 
-<%= f.label :authority %>
-<%= f.select :authority, options_for_select(User::AUTHORISATION_LEVEL) %>
-        <% end %>
+  <%= f.label :authority %>
+  <%= f.select :authority, options_for_select(User::AUTHORISATION_LEVEL, selected: (@user.authority.upcase if @user.authority?)) %>
+<% end %>
 
 <%= f.label :password %>
 <%= f.password_field :password %>
