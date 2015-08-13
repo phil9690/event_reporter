@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
 
-  EVENT_TYPES = [ "Attendance", "Late", "Phone", "Behaviour", "Suspension" ]
+  EVENT_TYPES = [ "Attendance", "Attitude/Behaviour", "Interviewing Issue", "Late Break", "Mobile Phone", "Spoken To By Management", "Suspension", "Timekeeping", "Other" ]
 
   belongs_to :employee
   belongs_to :user
