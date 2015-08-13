@@ -5,20 +5,44 @@
 <div class="row">
   <div class="small-12 columns">
     <%= form_tag("/all-events", method: "get", id: "search-form") do %>
-      <%= check_box_tag(:phone, "Phone") %>
-      <%= label_tag(:phone, "Phone") %>
-      <%= check_box_tag(:late, "Late") %>
-      <%= label_tag(:late, "Late") %>
-      <%= check_box_tag(:attendance, "Attendance") %>
-      <%= label_tag(:attendance, "Attendance") %>
-      <%= check_box_tag(:behaviour, "Behaviour") %>
-      <%= label_tag(:behaviour, "Behaviour") %>
-      <%= check_box_tag(:suspension, "Suspension") %>
-      <%= label_tag(:suspension, "Suspension") %>
-      <%= label_tag(:event_date, "Date") %>
-      <%= date_field(:event_date, nil, id: "event-date-select") %>
-      <%= submit_tag "Search", class: "button small radius" %>
-      <%= link_to "Clear", all_events_path, class: "button small radius" %>
+      <div class="small-4 columns">
+        <%= check_box_tag(:mobile_phone, "Mobile Phone") %>
+        <%= label_tag(:mobile_phone, "Mobile Phone") %>
+      </div>
+      <div class="small-4 columns">
+        <%= check_box_tag(:late_break, "Late Break") %>
+        <%= label_tag(:late_break, "Late Break") %>
+      </div>
+      <div class="small-4 columns">
+        <%= check_box_tag(:attendance, "Attendance") %>
+        <%= label_tag(:attendance, "Attendance") %>
+      </div>
+      <div class="small-4 columns">
+        <%= check_box_tag(:attitude_behaviour, "Attitude/Behaviour") %>
+        <%= label_tag(:attitude_behaviour, "Attitude/Behaviour") %>
+      </div>
+      <div class="small-4 columns">
+        <%= check_box_tag(:interviewing_issue, "Interviewing Issue") %>
+        <%= label_tag(:interviewing_issue, "Interviewing Issue") %>
+      </div>
+      <div class="small-4 columns">
+        <%= check_box_tag(:timekeeping, "Timekeeping") %>
+        <%= label_tag(:timekeeping, "Timekeeping") %>
+      </div>
+      <div class="small-4 columns">
+        <%= check_box_tag(:spoken_to_by_management, "Spoken to by management") %>
+        <%= label_tag(:spoken_to_by_management, "Spoken to by management") %>
+      </div>
+      <div class="small-4 columns">
+        <%= check_box_tag(:suspension, "Suspension") %>
+        <%= label_tag(:suspension, "Suspension") %>
+      </div>
+      <div class="small-12 columns">
+        <%= label_tag(:event_date, "Date") %>
+        <%= date_field(:event_date, nil, id: "event-date-select") %>
+        <%= submit_tag "Search", class: "button small radius" %>
+        <%= link_to "Clear", all_events_path, class: "button small radius" %>
+      </div>
     <% end %>
   </div>
 </div>
@@ -26,10 +50,10 @@
 <%= will_paginate @events, renderer: FoundationPagination::Rails %>
 <% @events.each do |event| %>
   <div class="panel radius event unread">
-    <p><strong><%= "#{event.employee.pid} - #{event.employee.first_name} #{event.employee.last_name}" %></strong></p>
-    <p><%= event.incident_type %></p>
-    <p>Logged on: <%= event.created_at.strftime("%d/%m/%Y") %> at <%= event.created_at.strftime("%H:%M:%S") %> by <%= logged_by(event.user) %> </p>
-    <%= link_to 'view', employee_event_path(event.employee, event), class: is_unread(@unreads, event) %>
-  </div>
+  <p><strong><%= "#{event.employee.pid} - #{event.employee.first_name} #{event.employee.last_name}" %></strong></p>
+  <p><%= event.incident_type %></p>
+  <p>Logged on: <%= event.created_at.strftime("%d/%m/%Y") %> at <%= event.created_at.strftime("%H:%M:%S") %> by <%= logged_by(event.user) %> </p>
+  <%= link_to 'view', employee_event_path(event.employee, event), class: is_unread(@unreads, event) %>
+</div>
 <% end %>
 <%= will_paginate @events, renderer: FoundationPagination::Rails%>
