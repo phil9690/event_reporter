@@ -33,7 +33,7 @@
     <%= will_paginate @employees, renderer: FoundationPagination::Rails %>
     <ul>
       <% @employees.each do |employee| %>
-        <li><%= link_to "#{employee.pid} - #{employee.first_name} #{employee.last_name}", employee_path(employee) %></li>
+        <li><%= link_to "#{employee.pid} - #{employee.last_name} #{employee.first_name}", employee_path(employee) %></li>
     <% end %>
   </ul>
   <%= will_paginate @employees, renderer: FoundationPagination::Rails %>

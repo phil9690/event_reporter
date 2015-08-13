@@ -3,7 +3,9 @@
 <% end %>
 <h3>User list</h3>
 <ul class="users">
-	<% @users.each do |user| %>
-		<li><%= link_to "#{user.first_name} #{user.last_name}".titleize, user_path(user) %></li>
-	<% end %>
+  <%= will_paginate @employees, renderer: FoundationPagination::Rails %>
+    <% @users.each do |user| %>
+      <li><%= link_to "#{user.last_name} #{user.first_name}".titleize, user_path(user) %></li>
+    <% end %>
+  <%= will_paginate @employees, renderer: FoundationPagination::Rails %>
 </ul>
