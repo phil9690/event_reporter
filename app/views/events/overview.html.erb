@@ -8,10 +8,13 @@
         <div id="total-stats" class="panel radius">
           <p><span>All:</span> <%= @events.count %></p>
           <p><span>Attendance:</span> <%= @events.where(incident_type: "Attendance").count %></p>
-          <p><span>Behaviour:</span> <%= @events.where(incident_type: "Behaviour").count %></p>
-          <p><span>Late:</span> <%= @events.where(incident_type: "Late").count %></p>
-          <p><span>Phone:</span> <%= @events.where(incident_type: "Phone").count %></p>
+          <p><span>Attitude/Behaviour:</span> <%= @events.where(incident_type: "Attitude/Behaviour").count %></p>
+          <p><span>Interviewing Issue:</span> <%= @events.where(incident_type: "Interviewing Issue").count %></p>
+          <p><span>Late Break:</span> <%= @events.where(incident_type: "Late Break").count %></p>
+          <p><span>Mobile Phone:</span> <%= @events.where(incident_type: "Mobile Phone").count %></p>
           <p><span>Suspension:</span> <%= @events.where(incident_type: "Suspension").count %></p>
+          <p><span>Spoken to by management:</span> <%= @events.where(incident_type: "Spoken to by management").count %></p>
+          <p><span>Timekeeping:</span> <%= @events.where(incident_type: "Timekeeping").count %></p>
         </div>
       </div>
       </li>
@@ -21,10 +24,13 @@
         <div id="daily-stats" class="panel radius">
           <p><span>All:</span> <%= @events_today.count %></p>
           <p><span>Attendance:</span> <%= @events_today.where(incident_type: "Attendance").count %></p>
-          <p><span>Behaviour:</span> <%= @events_today.where(incident_type: "Behaviour").count %></p>
-          <p><span>Late:</span> <%= @events_today.where(incident_type: "Late").count %></p>
-          <p><span>Phone:</span> <%= @events_today.where(incident_type: "Phone").count %></p>
+          <p><span>Attitude/Behaviour:</span> <%= @events_today.where(incident_type: "Attitude/Behaviour").count %></p>
+          <p><span>Interviewing Issue:</span> <%= @events_today.where(incident_type: "Interviewing Issue").count %></p>
+          <p><span>Late Break:</span> <%= @events_today.where(incident_type: "Late Break").count %></p>
+          <p><span>Mobile Phone:</span> <%= @events_today.where(incident_type: "Mobile Phone").count %></p>
           <p><span>Suspension:</span> <%= @events_today.where(incident_type: "Suspension").count %></p>
+          <p><span>Spoken to by management:</span> <%= @events_today.where(incident_type: "Spoken to by management").count %></p>
+          <p><span>Timekeeping:</span> <%= @events_today.where(incident_type: "Timekeeping").count %></p>
         </div>
       </div>
       </li>
@@ -34,10 +40,13 @@
         <div id="7-day-stats" class="panel radius">
           <p><span>All:</span> <%= @events_7_days.count %></p>
           <p><span>Attendance:</span> <%= @events_7_days.where(incident_type: "Attendance").count %></p>
-          <p><span>Behaviour:</span> <%= @events_7_days.where(incident_type: "Behaviour").count %></p>
-          <p><span>Late:</span> <%= @events_7_days.where(incident_type: "Late").count %></p>
-          <p><span>Phone:</span> <%= @events_7_days.where(incident_type: "Phone").count %></p>
+          <p><span>Attitude/Behaviour:</span> <%= @events_7_days.where(incident_type: "Attitude/Behaviour").count %></p>
+          <p><span>Interviewing Issue:</span> <%= @events_7_days.where(incident_type: "Interviewing Issue").count %></p>
+          <p><span>Late Break:</span> <%= @events_7_days.where(incident_type: "Late Break").count %></p>
+          <p><span>Mobile Phone:</span> <%= @events_7_days.where(incident_type: "Mobile Phone").count %></p>
           <p><span>Suspension:</span> <%= @events_7_days.where(incident_type: "Suspension").count %></p>
+          <p><span>Spoken to by management:</span> <%= @events_7_days.where(incident_type: "Spoken to by management").count %></p>
+          <p><span>Timekeeping:</span> <%= @events_7_days.where(incident_type: "Timekeeping").count %></p>
         </div>
       </div> 
     </div>
