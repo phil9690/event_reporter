@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_action :is_admin_or_sup, only: [:edit, :update]
 
   def index
-    @users = User.all
+    @users = User.all.order(last_name: :asc).paginate(:page => params[:page], :per_page => 15)
   end
 
   def new
