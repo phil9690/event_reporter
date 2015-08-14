@@ -3,6 +3,7 @@
   <p><%= @event.description %></p>
   <p>Logged on: <%= @event.created_at.strftime("%d/%m/%Y") %> at <%= @event.created_at.strftime("%H:%M:%S") %> by <%= logged_by(@event.user) %></p>
   <% if is_admin? %>
+    <%= link_to 'Edit', edit_employee_event_path(@event.employee, @event) %>
     <%= link_to 'Delete', employee_event_path(@event.employee, @event),
 					    method: :delete,
 				            data: { confirm: 'Sure?'} %>
