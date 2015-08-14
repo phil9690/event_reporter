@@ -1,10 +1,13 @@
 <h4>Total Events: <%= @events.count %></h4>
 <ul id="event-stats">
   <li><strong>Attendance:</strong> <%= @events.where("incident_type = 'Attendance'").count %></li>
-  <li><strong>Behaviour:</strong> <%= @events.where("incident_type = 'Behaviour'").count %></li>
-  <li><strong>Late:</strong> <%= @events.where("incident_type = 'Late'").count %></li>
-  <li><strong>Phone:</strong> <%= @events.where("incident_type = 'Phone'").count %></li>	
+  <li><strong>Attitude/Behaviour:</strong> <%= @events.where("incident_type = 'Attitude/Behaviour'").count %></li>
+  <li><strong>Interviewing Issue:</strong> <%= @events.where("incident_type = 'Interviewing Issue'").count %></li>
+  <li><strong>Late Break:</strong> <%= @events.where("incident_type = 'Late Break'").count %></li>
+  <li><strong>Mobile Phone:</strong> <%= @events.where("incident_type = 'Mobile Phone'").count %></li>	
   <li><strong>Suspension:</strong> <%= @events.where("incident_type = 'Suspension'").count %></li>	
+  <li><strong>Spoken to by management:</strong> <%= @events.where("incident_type = 'Spoken to by management'").count %></li>	
+  <li><strong>Timekeeping:</strong> <%= @events.where("incident_type = 'Timekeeping'").count %></li>	
 </ul>
 
 <%= will_paginate @events, renderer: FoundationPagination::Rails %>

@@ -4,10 +4,13 @@
 
     <h4><strong>Total Events: </strong><%= @employee.events.count %></h4>
     <p><strong>Attendance: </strong><%= @employee.events.where("incident_type = 'Attendance'").count %></p>
-    <p><strong>Behaviour: </strong><%= @employee.events.where("incident_type = 'Behaviour'").count %></p>
-    <p><strong>Phone: </strong><%= @employee.events.where("incident_type = 'Phone'").count %></p>
-    <p><strong>Late: </strong><%= @employee.events.where("incident_type = 'Late'").count %></p>
+    <p><strong>Attitude/Behaviour: </strong><%= @employee.events.where("incident_type = 'Attitude/Behaviour'").count %></p>
+    <p><strong>Interviewing Issue: </strong><%= @employee.events.where("incident_type = 'Interviewing Issue'").count %></p>
+    <p><strong>Late Break: </strong><%= @employee.events.where("incident_type = 'Late Break'").count %></p>
+    <p><strong>Mobile Phone: </strong><%= @employee.events.where("incident_type = 'Mobile Phone'").count %></p>
     <p><strong>Suspension: </strong><%= @employee.events.where("incident_type = 'Suspension'").count %></p>
+    <p><strong>Spoken to by management: </strong><%= @employee.events.where("incident_type = 'Spoken to by management'").count %></p>
+    <p><strong>Timekeeping: </strong><%= @employee.events.where("incident_type = 'Timekeeping'").count %></p>
 
     <% if is_admin? %>
       <%= link_to 'Edit Details', edit_employee_path(@employee), class: "button radius btn-green" %>
