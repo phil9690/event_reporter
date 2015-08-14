@@ -6,6 +6,7 @@ gem 'foundation-rails'
 gem 'will_paginate'
 gem 'will_paginate-foundation'
 gem 'pry'
+gem 'modernizr-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
