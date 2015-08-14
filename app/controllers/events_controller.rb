@@ -11,7 +11,7 @@ class EventsController < ApplicationController
       @events = Event.search(search_params).order("created_at DESC")
       @events = @events.paginate(:page => params[:page], :per_page => 5)
     else
-      @events = Event.all.paginate(:page => params[:page], :per_page => 5)
+      @events = Event.all.order(created_at: :desc).paginate(:page => params[:page], :per_page => 5)
     end
     @unreads = current_user.unreads
   end
@@ -31,6 +31,7 @@ class EventsController < ApplicationController
   def new
     @employee = Employee.find(params[:employee_id])
     @event = @employee.events.build
+    @latest_event = @employee.events.first
   end
 
   def create
