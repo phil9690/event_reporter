@@ -1,7 +1,10 @@
 <h3><%= @employee.first_name %> <%= @employee.last_name %></h3>
 
 <% if @latest_event.created_at.to_date == Date.today %>
-  <p><%= @employee.first_name %> has already had an event logged today at <%= @latest_event.created_at.strftime("%H:%M:%S") %> by <%= logged_by(@latest_event.user) %>. Reason: <%= @latest_event.incident_type %>
+  <div data-alert class="alert-box alert radius">
+    <%= @employee.first_name %> has already had an event logged today at <%= @latest_event.created_at.strftime("%H:%M:%S") %> by <%= logged_by(@latest_event.user) %>. Reason: <%= @latest_event.incident_type %>
+    <a href="#" class="close">&times;</a>
+  </div>
 <% end %>
 
 <%= form_for([@employee, @employee.events.build]) do |f| %>
