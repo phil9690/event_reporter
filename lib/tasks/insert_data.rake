@@ -19,10 +19,10 @@ namespace :employees do
     end
   end
 
-  desc "Insert employees"
+  desc "Insert events"
   task :insert_events => :environment do
     puts "Inserting events..."
-    CSV.foreach("/home/phil/event_list.csv", :headers => true) do |row|
+    CSV.foreach("/home/phil/event_list.csv", :headers => true, :encoding => 'ISO-8859-1') do |row|
       Event.create!(row.to_hash)
     end
   end
