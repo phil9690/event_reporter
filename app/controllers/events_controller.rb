@@ -94,6 +94,15 @@ class EventsController < ApplicationController
     end
   end
 
+  def employee_export
+    @employee = Employee.find(params[:id])
+    @data = @employee.events.all.order(:created_at)
+    respond_to do |format|
+      format.html { redirect_to root_url }
+      format.csv { send_data @data.to_csv }
+    end
+  end
+
   private
   def event_params
     params.require(:event).permit(:incident_type, :description, :employee_id, :user_id)
