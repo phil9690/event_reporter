@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   delete 'logout'  => 'sessions#destroy'
 
   get 'export', to: 'events#export', as: :events_export
+  get 'employee-export', to: 'events#employee_export', as: :employee_events_export
 
   get 'suspensions' => 'suspensions#index'
 
