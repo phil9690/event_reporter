@@ -50,6 +50,7 @@
   </table>
   
   <% if is_admin? %>
+  <%= link_to "Export Data", employee_events_export_path(format: "csv", id: @employee.id), class: "button radius btn-green" %>
       <%= link_to 'Edit Details', edit_employee_path(@employee), class: "button radius btn-green" %>
     <%= link_to 'Delete Employee', employee_path(@employee),
       method: :delete,
