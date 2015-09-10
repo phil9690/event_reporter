@@ -4,11 +4,12 @@ module EventsHelper
     "#{user.first_name} #{user.last_name}".titleize
   end
 
-  def is_unread(unreads, event)  
-    unreads.each do |unread|
-      if event.id == unread.event_id
-        return "unread"
-      end
+  def is_unread(unreads, event)
+    unread = unreads.find_by(event_id: event.id)
+    if unread
+      return "unread"
+    else
+      return ""
     end
   end
 
