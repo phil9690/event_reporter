@@ -13,7 +13,7 @@ class EventsController < ApplicationController
     else
       @events = Event.all.order(created_at: :desc).paginate(:page => params[:page], :per_page => 5)
     end
-    @unreads = current_user.unreads
+      @unreads = current_user.unreads
   end
 
   def overview
