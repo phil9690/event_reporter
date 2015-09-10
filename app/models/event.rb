@@ -5,6 +5,7 @@ class Event < ActiveRecord::Base
   belongs_to :employee
   belongs_to :user
   has_many :suspension, dependent: :destroy
+  has_many :unreads, dependent: :destroy
 
   default_scope -> { order(created_at: :desc) }
 
