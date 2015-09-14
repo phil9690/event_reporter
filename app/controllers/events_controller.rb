@@ -6,14 +6,14 @@ class EventsController < ApplicationController
 
 
   def all_events
+      @unreads = current_user.unreads
     search_params = params.except(:utf8, :commit, :controller, :action, :page)
     if search_params.present?
-      @events = Event.search(search_params).order("created_at DESC")
+      @events = Event.search(search_params, @unreads).order("created_at DESC")
       @events = @events.paginate(:page => params[:page], :per_page => 5)
     else
       @events = Event.all.order(created_at: :desc).paginate(:page => params[:page], :per_page => 5)
     end
-      @unreads = current_user.unreads
   end
 
   def overview
