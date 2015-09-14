@@ -37,6 +37,10 @@
         <%= check_box_tag(:suspension, "Suspension") %>
         <%= label_tag(:suspension, "Suspension") %>
       </div>
+      <div class="small-4 columns">
+        <%= check_box_tag(:unread, "Unread") %>
+        <%= label_tag(:unread, "Unread") %>
+      </div>
       <div class="small-12 columns">
         <%= label_tag(:event_date, "Date") %>
         <%= date_field(:event_date, nil, id: "event-date-select") %>

@@ -22,10 +22,13 @@ class Event < ActiveRecord::Base
     end
   end
 
-  def self.search(search_params)
-    type_search = search_params.except(:event_date)
+  def self.search(search_params, unreads)
+    #unreads = Unread.find_by(user_id: current_user.id) if search_params[:unread].present?
+    type_search = search_params.except(:event_date, :unread)
     event_date = search_params[:event_date][0]
     scope = all
+    unreads = unreads.map { |unread| unread.event_id }
+    scope = scope.where(id: unreads) if search_params[:unread].present?
     scope = scope.where(incident_type: type_search.values) unless type_search.empty?
     scope = scope.where("DATE(created_at) = ?", event_date) unless event_date.empty?
     scope
