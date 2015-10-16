@@ -41,9 +41,15 @@
         <%= check_box_tag(:unread, "Unread") %>
         <%= label_tag(:unread, "Unread") %>
       </div>
+      <div class="small-6 columns">
+        <%= label_tag(:event_date_from, "Date from") %>
+        <%= date_field(:event_date_from, nil) %>
+      </div>
+      <div class="small-6 columns">
+        <%= label_tag(:event_date_to, "Date to") %>
+        <%= date_field(:event_date_to, nil) %>
+      </div>
       <div class="small-12 columns">
-        <%= label_tag(:event_date, "Date") %>
-        <%= date_field(:event_date, nil, id: "event-date-select") %>
         <%= submit_tag "Search", class: "button small radius" %>
         <%= link_to "Clear", all_events_path, class: "button small radius" %>
       </div>
