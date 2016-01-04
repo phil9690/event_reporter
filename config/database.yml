@@ -13,8 +13,8 @@ development:
   adapter: mysql2
   encoding: utf8
   database: event_reporter
-  username: root
-  password: jewclaw123
+  username: admin
+  password: admin
   host: 127.0.0.1
   port: 3306
 # Warning: The database defined as "test" will be erased and
@@ -24,8 +24,8 @@ test:
   adapter: mysql2
   encoding: utf8
   database: event_reporter_test
-  username: root
-  password: jewclaw123
+  username: admin
+  password: admin
   host: 127.0.0.1
   port: 3306
 
