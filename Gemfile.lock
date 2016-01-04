@@ -55,6 +55,8 @@ GEM
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (2.5.2)
+    faker (1.5.0)
+      i18n (~> 0.5)
     foundation-rails (5.5.2.1)
       railties (>= 3.1.0)
       sass (>= 3.3.0, < 3.5)
@@ -160,6 +162,7 @@ DEPENDENCIES
   bcrypt
   byebug
   coffee-rails (~> 4.1.0)
+  faker
   foundation-rails
   jbuilder (~> 2.0)
   jquery-rails
@@ -175,3 +178,6 @@ DEPENDENCIES
   web-console (~> 2.0)
   will_paginate
   will_paginate-foundation
+
+BUNDLED WITH
+   1.10.6
