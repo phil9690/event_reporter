@@ -6,11 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-#User.create!(first_name: 'default', last_name: 'admin', username: 'admin', authority: 'admin', password: 'password', password_confirmation: 'password')
+User.create!(first_name: 'default', last_name: 'admin', username: 'admin', authority: 'admin', password: 'password', password_confirmation: 'password')
 
 for employee in 0..50
   name = Faker::Name.name.split
-  Employee.create!(first_name: name[0], last_name: name[1], active: true, pid: 95000 + employee)
+  Employee.create!(first_name: name[0], last_name: name[1], active: true, pid: 91000 + employee)
 end
-
-for event in 0.
