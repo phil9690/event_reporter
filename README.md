@@ -16,4 +16,4 @@ GRANT ALL PRIVILEGES ON * . * TO 'admin'@'localhost';
 * Clone the repo
 * run ```bundle```
 * run ```bundle exec rake db:setup```
-* Boot the server ```rails s -b 0.0.0.0
+* Boot the server ```rails s -b 0.0.0.0```
