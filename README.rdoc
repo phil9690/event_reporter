@@ -1,28 +1,19 @@
-== README
+# Event Reporter
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Setup
 
-Things you may want to cover:
+You will first need to install mysql
+https://www.mysql.com/
 
-* Ruby version
+Once installed create a user which is used to create and access the database
 
-* System dependencies
+```
+# LINUX
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin';
+GRANT ALL PRIVILEGES ON * . * TO 'admin'@'localhost';
+```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Clone the repo
+* run ```bundle```
+* run ```bundle exec rake db:setup```
+* Boot the server ```rails s -b 0.0.0.0
