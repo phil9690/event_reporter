@@ -6,4 +6,9 @@ class Report < ApplicationMailer
     mail(to: all_emails, subject: "Events for #{@today}")
   end
 
+  def flagged_event(event)
+    @event = event
+    mail(to: all_emails, subject: "Flagged event for #{@event.employee.first_name} #{@event.employee.last_name}")
+  end
+
 end

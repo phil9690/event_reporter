@@ -28,6 +28,12 @@
 
 <%= f.hidden_field :user_id, :value => current_user.id %>
 
+<label>Flag to management</label>
+<div class="switch">
+  <%= f.check_box :flagged %>
+  <%= f.label :flagged %>
+</div>
+
 <%= f.submit "Submit", data: { disable_with: "Saving..." }, class: "button radius" %>
 
 <% end %>

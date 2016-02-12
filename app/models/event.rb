@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  
+  attr_accessor :flagged
 
   EVENT_TYPES = [ "Attendance", "Attitude/Behaviour", "Interviewing Issue", "Late Break", "Mobile Phone", "Spoken To By Management", "Suspension", "Timekeeping", "Other" ]
 
