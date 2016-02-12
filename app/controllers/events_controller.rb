@@ -49,6 +49,9 @@ class EventsController < ApplicationController
         if @event.incident_type == "Suspension"
           Suspension.create(employee_id: @event.employee_id, event_id: @event.id)
         end
+        if params[:event][:flagged] == "1"
+          Report.flagged_event(@event).deliver_now
+        end
         redirect_to employee_event_path(@event.employee, @event)
       else
         render 'new'

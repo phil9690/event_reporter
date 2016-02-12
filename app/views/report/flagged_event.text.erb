@@ -1,0 +1,6 @@
+Interviewer: <%= "#{@event.employee.first_name} #{@event.employee.last_name}".titleize %>
+Event type: <%= @event.incident_type %>
+Description: <%= @event.description %>
+Logged at: <%= @event.created_at.strftime("%H:%M:%S") %>
+Logged by: <%= "#{@event.user.first_name} #{@event.user.last_name}".titleize %>
+
