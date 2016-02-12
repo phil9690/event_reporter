@@ -25,6 +25,13 @@
   <%= f.label :active %>
 </div>
 
+<label>Trainee</label>
+<div class="switch">
+  <%= f.check_box :trainee %>
+  <%= f.label :trainee %>
+</div>
+
+
 <%= f.submit "Submit", data: { disable_with: "Saving..." }, class: "button radius" %>
 
 <% end %>

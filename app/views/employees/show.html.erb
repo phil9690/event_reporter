@@ -1,6 +1,9 @@
 <div class="row">
   <div class="small-12 columns employee-show">
     <h3><%= @employee.pid %> - <%= @employee.first_name.humanize %> <%= @employee.last_name.humanize %></h3>
+    <% if @employee.trainee %>
+      <h3 class="red-text">Trainee</h3>
+    <% end %>
 
   <table>
     <thead>
