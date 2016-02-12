@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
   validates :username, presence: true, uniqueness: { case_sensitive: false }
   validates :authority, presence: true
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, :on => :create
   
   has_secure_password
   has_many :events
