@@ -2,8 +2,8 @@
 <p><strong>Authority:</strong> <%= @user.authority.humanize %></p>
 <p><strong>Events logged:</strong> <%= @user.events.all.count %></p>
 <p><strong>Unread events:</strong> <%= @unreads.count %></p>
+<p><strong>Email:</strong> <%= @user.email %></p>
 <p><strong>ID:</strong> <%= @user.id %></p>
-
 <% unless is_qa? %>
   <%= link_to 'Edit user details', edit_user_path(@user), class: "button radius btn-green" %>
 <% end %>

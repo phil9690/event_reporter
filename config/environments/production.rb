@@ -1,4 +1,7 @@
 Rails.application.configure do
+  
+  require "resolv-replace.rb"
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -68,6 +71,8 @@ Rails.application.configure do
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
 
+  config.action_mailer.default_url_options = { host: '127.0.0.1' }
+
   # Send deprecation notices to registered listeners.
   config.active_support.deprecation = :notify
 
@@ -76,4 +81,15 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      :address        => 'mail.populus.co.uk',
+      :port           => '25',
+      :authentication => :plain,
+      :enable_starttls_auto => true
+  }
+
 end

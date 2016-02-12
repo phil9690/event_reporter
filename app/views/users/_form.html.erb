@@ -21,6 +21,9 @@
   <%= f.label :username %>
   <%= f.text_field :username %>
 
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
   <%= f.label :authority %>
   <%= f.select :authority, options_for_select(User::AUTHORISATION_LEVEL, selected: (@user.authority.upcase if @user.authority?)) %>
 <% end %>
