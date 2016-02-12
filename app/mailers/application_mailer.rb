@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "pclauzel@populusdatasolutions.com"
+  default from: "EventReports@populusdatasolutions.com"
   layout 'mailer'
 end

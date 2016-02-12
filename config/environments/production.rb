@@ -86,7 +86,7 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address        => 'mail.populus.co.uk',
+      :address        => 'mail.populus.co.uk',
       :port           => '25',
       :authentication => :plain,
       :enable_starttls_auto => true
