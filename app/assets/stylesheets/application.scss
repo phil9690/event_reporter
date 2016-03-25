@@ -75,29 +75,49 @@ table {
   max-width: initial;
 }
 
+#nav-container {
+  min-height: 100vh;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0;
+}
 
 #nav {
   background: $populus-green;
-  padding: 2px;
-  min-height: 60px;
+  padding: 0;
+  min-height: 100%;
+  a {
+    display: block;
+    padding: 0.5em
+  }
   a, a:visited, a:link {
     color: #fff;
   }
   ul {
-    width: 95%;
-    margin: 0 auto;
-    padding: 5px 5px 5px 0;
+    margin: 0;
+    padding: 0;
   }
   li {
-    display: inline-block;
-    padding: 10px;
+    display: block;
+    padding: 0;
     font-size: 1.2em;
-    font-family: 'Oswald', sans-serif;
+    width: 100%;
+    &:hover {
+      background: darken($populus-green, 10%);
+    }
   }
   h3 {
     color: #fff;
     font-size: 1.3em;
     text-align: center;
+  }
+  .user {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%
   }
 }
 
@@ -145,7 +165,7 @@ table {
 }
 
 .active {
-  border-bottom: 2px solid #fff;
+  background: darken($populus-green, 10%);
 }
 
 .btn-green {
@@ -215,4 +235,58 @@ table {
     margin: 0;
   }
 }
+
+.hollow {
+  background: none;
+  color: $populus-green;
+  border: 1px solid $populus-green;
+  font-size: 1em;
+  font-family: Lato, 'sans-serif';
+  &:hover {
+    color: #fff;
+    background: $populus-green;
+    border: 1px solid #fff;
+  }
+}
+
+.hollow.red {
+  color: $alert-red;
+  border: 1px solid $alert-red;
+  &:hover {
+    color: #fff;
+    background: $alert-red;
+    border: 1px solid #fff;
+  }
+}
+
+.hollow.blue {
+  color: $light-blue;
+  border: 1px solid $light-blue;
+  &:hover {
+    color: #fff;
+    background: $light-blue;
+    border: 1px solid #fff;
+  }
+}
+
+.options {
+  .button {
+    width: 5em;
+    padding: 0.3em;
+    margin: 0;
+    margin-left: 1em;
+    &:first-child {
+      margin-left: 0
+    }
+  }
+}
+
+ul.pagination {
+  text-align: center;
+  li {
+    display: inline-block;
+    float: none;
+  }
+}
+    
 

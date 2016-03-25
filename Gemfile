@@ -1,13 +1,16 @@
 source 'https://rubygems.org'
 
 gem 'bcrypt'
-gem'mysql2'
+gem 'mysql2'
 gem 'foundation-rails'
 gem 'will_paginate'
 gem 'will_paginate-foundation'
 gem 'pry'
 gem 'modernizr-rails'
 gem 'faker'
+
+# Use haml for html markup and erb
+gem 'haml'
 
 gem "letter_opener", :group => :development
 

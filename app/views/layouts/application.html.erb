@@ -16,15 +16,17 @@
 </head>
 
 <body>
-<%= render 'layouts/nav' %>
-<%= render 'layouts/side_nav' %>
 <div class="row">
-  <div class="medium-7 small-12 small-centered columns content">
+  <div class="medium-2 columns" id="nav-container">
+    <%= render 'layouts/nav' %>
+    <%= render 'layouts/side_nav' %>
+  </div>
+  <div class="medium-10 columns content">
     <% flash.each do |name, msg| %>
       <% if msg.is_a?(String) %>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
-  <% end %>
-  <% end %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+    <% end %>
     <%= yield %>
   </div>
 </div>

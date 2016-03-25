@@ -23,4 +23,7 @@ Rails.application.routes.draw do
 
   get 'suspensions' => 'suspensions#index'
 
+  # Job types routes
+  resources :job_types
+
 end
