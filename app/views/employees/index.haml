@@ -1,0 +1,46 @@
+.employee-index-header
+  .small-12.columns
+    - unless is_qa?
+      = link_to "Add Employee", new_employee_path, class: "button radius btn-green"
+    %h3 Employees
+.employee-search
+  .small-12.columns
+    = form_tag("/employees", method: "get", id: "search-form") do
+      .small-5.columns
+        = label_tag(:first_name, "First Name")
+        = text_field_tag(:first_name)
+      .small-5.columns
+        = label_tag(:last_name, "Surname")
+        = text_field_tag(:last_name)
+      .small-2.columns
+        = label_tag(:inactive, "Inactive")
+        = check_box_tag(:inactive)
+      .small-12.columns
+        = submit_tag "Search", class: "button small radius"
+        = link_to "Clear", employees_path, class: "button small radius"
+.employee-list
+  .small-12.columns
+    = will_paginate @employees, renderer: FoundationPagination::Rails
+    %table
+      %thead
+        %tr
+          %th ID
+          %th First Name
+          %th Last Name
+          %th Events
+          %th Trainee
+          %th Options
+      %tbody
+        - @employees.each do |employee|
+          %tr
+            %td= employee.pid
+            %td= employee.first_name
+            %td= employee.last_name
+            %td= employee.events.count
+            %td= is_trainee(employee)
+            %td.options
+              = link_to 'View', employee_path(employee), class: "button hollow"
+              = link_to 'Edit', edit_employee_path(employee), class: "button hollow blue"
+              = link_to 'Delete', employee_path(employee), method: :delete, data: { cofirm: 'Are you sure?'}, class: "button hollow red"
+
+    = will_paginate @employees, renderer: FoundationPagination::Rails
