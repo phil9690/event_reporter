@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160212133613) do
+ActiveRecord::Schema.define(version: 20160325141241) do
 
   create_table "employees", force: :cascade do |t|
     t.string   "first_name", limit: 255
@@ -34,6 +34,23 @@ ActiveRecord::Schema.define(version: 20160212133613) do
 
   add_index "events", ["employee_id"], name: "index_events_on_employee_id", using: :btree
 
+  create_table "job_types", force: :cascade do |t|
+    t.string   "job_type",   limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "jobs", force: :cascade do |t|
+    t.integer  "job_number",  limit: 4
+    t.string   "job_name",    limit: 255
+    t.integer  "job_type_id", limit: 4
+    t.float    "bonus_rate",  limit: 24
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "jobs", ["job_type_id"], name: "index_jobs_on_job_type_id", using: :btree
+
   create_table "read_marks", force: :cascade do |t|
     t.integer  "readable_id",   limit: 4
     t.string   "readable_type", limit: 255, null: false
@@ -42,6 +59,22 @@ ActiveRecord::Schema.define(version: 20160212133613) do
   end
 
   add_index "read_marks", ["user_id", "readable_type", "readable_id"], name: "index_read_marks_on_user_id_and_readable_type_and_readable_id", using: :btree
+
+  create_table "scores", force: :cascade do |t|
+    t.integer  "employee_id", limit: 4
+    t.integer  "user_id",     limit: 4
+    t.integer  "job_id",      limit: 4
+    t.float    "score",       limit: 24
+    t.integer  "completes",   limit: 4
+    t.float    "hours",       limit: 24
+    t.date     "score_date"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "scores", ["employee_id"], name: "index_scores_on_employee_id", using: :btree
+  add_index "scores", ["job_id"], name: "index_scores_on_job_id", using: :btree
+  add_index "scores", ["user_id"], name: "index_scores_on_user_id", using: :btree
 
   create_table "suspensions", force: :cascade do |t|
     t.integer  "employee_id", limit: 4
@@ -71,4 +104,8 @@ ActiveRecord::Schema.define(version: 20160212133613) do
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   add_foreign_key "events", "employees"
+  add_foreign_key "jobs", "job_types"
+  add_foreign_key "scores", "employees"
+  add_foreign_key "scores", "jobs"
+  add_foreign_key "scores", "users"
 end
